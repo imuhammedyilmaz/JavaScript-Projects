@@ -1,0 +1,161 @@
+body {
+    background-color: #000;
+    color: #0f0;
+    font-family: 'VT323', monospace;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.crt-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.terminal-container {
+    width: 90%;
+    max-width: 800px;
+    margin: 40px auto;
+    background-color: #0c0c0c;
+    border-radius: 6px;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+    overflow: hidden;
+}
+
+.terminal-header {
+    background-color: #333;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #666;
+}
+
+.terminal-buttons {
+    display: flex;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+
+.red { background-color: #ff5f56; }
+.yellow { background-color: #ffbd2e; }
+.green { background-color: #27c93f; }
+
+.terminal-title {
+    margin-left: 20px;
+    color: #ddd;
+    font-size: 14px;
+}
+
+.terminal-content {
+    padding: 20px;
+}
+
+.type-text {
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 10px 0;
+    border-right: 2px solid #0f0;
+    animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+    font-size: 24px;
+}
+
+.delay-1 {
+    animation-delay: 1s;
+    opacity: 0;
+    animation: typing 3s steps(40, end) 1s forwards, blink-caret 0.75s step-end infinite;
+}
+
+.delay-2 {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    opacity: 0;
+    animation: fadeIn 1s 2s forwards;
+}
+
+.delay-3 {
+    opacity: 0;
+    animation: typing 3s steps(40, end) 3s forwards, blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; opacity: 1; }
+    to { width: 100%; opacity: 1; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #0f0; }
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+.video-box {
+    border: 2px solid #0f0;
+    padding: 4px;
+    position: relative;
+}
+
+.video-box::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border: 1px solid #0f0;
+    animation: glowing 1.5s infinite alternate;
+}
+
+@keyframes glowing {
+    from { box-shadow: 0 0 5px #0f0; }
+    to { box-shadow: 0 0 15px #0f0, 0 0 25px #0f0; }
+}
+
+.video-box iframe {
+    width: 100%;
+    height: 400px;
+    background-color: #000;
+}
+
+.retro-icon {
+    position: fixed;
+    bottom: 20px;
+    left: -100px;
+    background-color: #000;
+    border: 2px solid #0f0;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: left 0.8s cubic-bezier(0.1, 0.7, 0.1, 1);
+}
+
+.icon-text {
+    margin-top: 5px;
+    font-size: 16px;
+    color: #0f0;
+}
+
+@media (max-width: 768px) {
+    .type-text {
+        font-size: 20px;
+    }
+    
+    .video-box iframe {
+        height: 240px;
+    }
+}
